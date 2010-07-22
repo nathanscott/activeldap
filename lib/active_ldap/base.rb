@@ -274,6 +274,7 @@ module ActiveLdap
   # by extension classes.
   class Base
     include GetTextSupport
+    include ActiveRecord::Persistence
     public :gettext
 
     if Object.const_defined?(:Reloadable)

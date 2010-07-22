@@ -901,7 +901,9 @@ require_gem_if_need = Proc.new do |library_name, gem_name, *gem_args|
   end
 end
 
-require_gem_if_need.call("active_support", "activesupport", "= 2.3.4")
+require_gem_if_need.call("active_support", "activesupport", ">= 3.0.0.beta4")
+require 'active_support/dependencies'
+require 'active_support/all'
 
 if ActiveSupport.const_defined?(:Dependencies)
   dependencies = ActiveSupport::Dependencies
@@ -923,7 +925,7 @@ else
   require 'active_ldap/timeout_stub'
 end
 
-require_gem_if_need.call("active_record", "activerecord", "= 2.3.4")
+require_gem_if_need.call("active_record", "activerecord", ">= 3.0.0.beta4")
 begin
   require_gem_if_need.call("locale", nil, "= 2.0.4")
   require_gem_if_need.call("gettext", nil, "= 2.0.4")
@@ -970,7 +972,7 @@ ActiveLdap::Base.class_eval do
 
   include ActiveLdap::Acts::Tree
 
-  include ActiveLdap::Validations
+  # include ActiveLdap::Validations
   include ActiveLdap::Callbacks
 end
 
